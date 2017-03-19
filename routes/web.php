@@ -19,3 +19,7 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index');
+
+Route::resource('post','PostController');
+Route::resource('comment','CommentController');
+Route::resource('category','CategoryController');
