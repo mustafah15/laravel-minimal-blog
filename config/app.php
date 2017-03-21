@@ -12,7 +12,7 @@ return [
     | any other location as required by the application or its packages.
     */
 
-    'name' => 'Laravel',
+    'name' => 'Laravel Blog',
 
     /*
     |--------------------------------------------------------------------------
@@ -168,7 +168,7 @@ return [
          * Package Service Providers...
          */
         Laravel\Tinker\TinkerServiceProvider::class,
-        Spatie\Fractal\FractalServiceProvider::class,
+
 
         /*
         * Application Service Providers...
@@ -228,7 +228,11 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
 
+        /*
+         * Package aliases...
+         */
         'Fractal' => Spatie\Fractal\FractalFacade::class,
+
 
 
     ],
