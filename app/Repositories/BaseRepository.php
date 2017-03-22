@@ -10,9 +10,12 @@ namespace App\Repositories;
 
 use App\Contracts\RepositoryContract;
 use Illuminate\Database\Eloquent\Model;
+use App\Traits\Paginatable;
 
 abstract class BaseRepository implements RepositoryContract
 {
+    use Paginatable;
+
     protected $model;
 
 
@@ -104,5 +107,13 @@ abstract class BaseRepository implements RepositoryContract
     public function getAllItems()
     {
         return $this->model->all();
+    }
+
+    /**
+     * @return array $items
+     */
+    public function paginateAllItem()
+    {
+        return $this->model->paginate(10);
     }
 }

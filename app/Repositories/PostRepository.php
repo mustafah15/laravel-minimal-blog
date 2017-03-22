@@ -16,4 +16,14 @@ class PostRepository extends BaseRepository
     {
         $this->setModel(new Post());
     }
+
+    public function getPostsWithUsers()
+    {
+        return $this->model->with('user')->get();
+    }
+
+    public function getPostWithUserById($postId)
+    {
+        return $this->model->find($postId)->user();
+    }
 }

@@ -2,16 +2,18 @@
 
 namespace App\Http\Controllers;
 
+use App\Repositories\PostRepository;
 use Illuminate\Http\Request;
-
+use App\Managers\PostManager;
 class PostController extends Controller
 {
+
     public function index()
     {
-        return view('posts.all');
+
     }
 
-    public function store()
+    public function store(Request $request)
     {
 
     }
@@ -21,11 +23,29 @@ class PostController extends Controller
 
     }
 
-    public function destroy(){}
+    public function destroy($postId)
+    {
 
-    public function update(){}
+    }
 
-    public function show(){}
+    public function update($postId)
+    {
 
-    public function edit(){}
+    }
+
+    public function show($postId)
+    {
+
+    }
+
+    public function edit($postId)
+    {
+
+    }
+
+    public function getAll()
+    {
+
+    }
+
 }
