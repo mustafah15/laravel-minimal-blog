@@ -16,12 +16,18 @@ class PostManager extends BaseManager
         $this->postRepository = new PostRepository();
     }
 
+    public function getPostsByCategoryId($categoryId)
+    {
+        //todo
+    }
+
     /**
-     *
+     * return all posts
+     * @return array
      */
     public function getAllPosts()
     {
-       $posts =  $this->postRepository->getPostsWithUsers();
+       $posts =  $this->postRepository->getPostsFullData();
        return $this->wrapCollection($posts->toArray());
     }
 
@@ -35,7 +41,16 @@ class PostManager extends BaseManager
         return [
             'title' => $post['title'],
             'content'=> $post['content'],
-            'by_user' => $post['user'],
+            'user' =>
+                [
+                    'name' => $post['user']['name'],
+                    'email' => $post['user']['email'],
+                ],
+            'category'=>
+                [
+                    'name'=>$post['category']['name'],
+                    'id'=>$post['category']['id']
+                ],
             'created'=> $post['created_at'],
         ];
     }

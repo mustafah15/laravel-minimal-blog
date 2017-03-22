@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 
-class CommentController extends Controller
+use App\Http\Controllers\Api\ApiController;
+
+class CommentController extends ApiController
 {
 
 }

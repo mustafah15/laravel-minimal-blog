@@ -2,11 +2,21 @@
 
 namespace App\Http\Controllers;
 
-use App\Repositories\PostRepository;
-use Illuminate\Http\Request;
+use App\Http\Controllers\Api\ApiController;
 use App\Managers\PostManager;
-class PostController extends Controller
+use Illuminate\Http\Request;
+
+
+class PostController extends ApiController
 {
+
+    protected $postManager;
+
+    public function __construct()
+    {
+        $this->postManager =  new PostManager();
+    }
+
 
     public function index()
     {
@@ -45,7 +55,9 @@ class PostController extends Controller
 
     public function getAll()
     {
+        $data = $this->postManager->getAllPosts();
 
+        return  $this->setStatusCode(200)->respond($data);
     }
 
 }

@@ -11,7 +11,7 @@
 |
 */
 
-Route::get('/', ['uses'=>'PostController@index','as'=>'post']);
+Route::get('/', ['uses'=>'PostController@getAll','as'=>'post']);
 
 
 Auth::routes();
