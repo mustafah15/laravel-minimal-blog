@@ -11,7 +11,8 @@
 |
 */
 
-Route::get('/', ['uses'=>'PostController@getAll','as'=>'post']);
+Route::get('/post/data', ['uses'=>'PostController@getData','as'=>'postsData']);
+Route::get('/post/data/{id}', ['uses'=>'PostController@getDataForSinglePost','as'=>'singlePostData']);
 
 
 Auth::routes();

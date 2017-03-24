@@ -35,6 +35,7 @@
         </div>
     </div>
 </footer>
+@stack('scripts')
 
 <!-- jQuery -->
 <script src="{{URL::asset('/app/vendor/jquery/jquery.min.js')}}"></script>
@@ -48,5 +49,4 @@
 
 <!-- Theme JavaScript -->
 <script src="{{URL::asset('/app/js/clean-blog.min.js')}}"></script>
-
 </body>

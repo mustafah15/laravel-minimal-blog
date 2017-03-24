@@ -41,7 +41,11 @@ class PostRepository extends BaseRepository
      */
     public function getPostWithUserById($postId)
     {
-        return $this->model->find($postId)->user();
+        return $this->model
+            ->with('user')
+            ->with('category')
+            ->where('id',$postId)
+            ->get();
     }
 
 }
