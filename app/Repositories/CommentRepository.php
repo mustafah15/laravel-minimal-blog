@@ -16,4 +16,5 @@ class CommentRepository extends BaseRepository
     {
         $this->setModel(new Comment());
     }
+
 }

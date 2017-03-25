@@ -50,6 +50,11 @@ class CategoryController extends ApiController
         return $this->setStatusCode(200)->respond($data);
     }
 
+    /**
+     * show single category
+     * @param $categoryId
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function show($categoryId)
     {
         return view('categories.category', ['categoryId' => $categoryId]);
