@@ -25,6 +25,28 @@ class CategoryManager extends BaseManager
     }
 
     /**
+     * @param $categoryId
+     * @return array
+     */
+    public function getSingleCategoryWithPosts($categoryId)
+    {
+        $category = $this->categoryRepository->getCategoryByIdWithPosts($categoryId);
+
+        return $this->wrap($category[0]->toArray());
+    }
+
+    /**
+     * get All system categories
+     * @return array
+     */
+    public function getAllCategories ()
+    {
+        $data = $this->categoryRepository->getAllItems();
+
+        return $this->wrapCollection($data->toArray());
+    }
+
+    /**
      * @param $category
      * @return array
      */
@@ -33,6 +55,9 @@ class CategoryManager extends BaseManager
         return [
             'name'=>$category['name'],
             'id'=>$category['id'],
+            'description'=>$category['description'],
+            'url'=>route('category.show',['categoryId'=>$category['id']]),
+            'posts'=> (new PostManager())->wrapCollection($category['posts'],'WrapperForCategoryListing'),
         ];
     }
 }

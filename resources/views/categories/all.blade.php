@@ -1,20 +1,19 @@
 
 @extends('layouts.home')
 @section('posts')
-<div id="app">
-    <div v-for="post in posts" class="post-preview">
-        <a :href="post.url">
-            <h2 class="post-title">
-               @{{post.title}}
-            </h2>
-            <h3 class="post-subtitle">
-                @{{ post.content }}
-            </h3>
-        </a>
-        <p class="post-meta">Posted by <a href="">@{{ post.user.name }}</a> @{{ post.created }}</p>
+    <div id="app">
+        <div v-for="category in categories" class="post-preview">
+            <a :href="category.url">
+                <h2 class="post-title">
+                    @{{category.name}}
+                </h2>
+                <h3 class="post-subtitle">
+                    @{{ category.description }}
+                </h3>
+            </a>
+        </div>
     </div>
-</div>
-<hr>
+    <hr>
 @endsection
 
 
@@ -23,13 +22,13 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/vue-resource/1.0.3/vue-resource.min.js"></script>
 
 <script>
-    var dataRoute = '{{route('postsData')}}';
+    var dataRoute = '{{route('CategoriesData')}}';
     new Vue({
 
         el: '#app',
 
         data: {
-            posts: []
+            categories: []
         },
 
         created() {this.fetchData();},
@@ -38,7 +37,7 @@
             fetchData() {
                 this.$http.get(dataRoute)
                     .then(result => {
-                    this.posts = result.data
+                    this.categories = result.data
             })
             }
         }

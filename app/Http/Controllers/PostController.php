@@ -4,53 +4,38 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Api\ApiController;
 use App\Managers\PostManager;
-use Illuminate\Http\Request;
-
 
 class PostController extends ApiController
 {
 
     protected $postManager;
 
+    /**
+     * PostController constructor.
+     */
     public function __construct()
     {
         $this->postManager =  new PostManager();
     }
 
 
+    /**
+     * show all posts
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function index()
     {
         return view('posts.all');
     }
 
-    public function store(Request $request)
-    {
-
-    }
-
-    public function create()
-    {
-
-    }
-
-    public function destroy($postId)
-    {
-
-    }
-
-    public function update($postId)
-    {
-
-    }
-
+    /**
+     * show single post
+     * @param $postId
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function show($postId)
     {
        return view('posts.post',['postId'=>$postId]);
-    }
-
-    public function edit($postId)
-    {
-
     }
 
     /**
@@ -67,14 +52,14 @@ class PostController extends ApiController
     /**
      * return single post data
      * @param $postId
-     * @return array response
+     * @return Api\response
      */
     public function getDataForSinglePost($postId)
     {
         $data = $this->postManager->getSinglePost($postId);
 
         if (!$data)
-            $this->setStatusCode(404)->respondWithError('Post Not Found!');
+            return $this->setStatusCode(404)->respondWithError('Post Not Found!');
 
         return $this->setStatusCode(200)->respond($data);
     }

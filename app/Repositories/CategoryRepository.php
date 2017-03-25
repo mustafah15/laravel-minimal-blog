@@ -16,4 +16,12 @@ class CategoryRepository extends BaseRepository
     {
         $this->setModel(new Category());
     }
+
+    public function getCategoryByIdWithPosts($categoryId)
+    {
+        return $this->model
+            ->with('posts')
+            ->where('id', $categoryId)
+            ->get();
+    }
 }

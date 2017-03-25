@@ -16,6 +16,10 @@ class PostManager extends BaseManager
         $this->postRepository = new PostRepository();
     }
 
+    /**
+     * @param $postId
+     * @return array
+     */
     public function getSinglePost($postId)
     {
         $post = $this->postRepository->getPostWithUserById($postId);
@@ -34,7 +38,7 @@ class PostManager extends BaseManager
     }
 
     /**
-     * Wrapper for post API
+     * Default Wrapper for post API
      * @param $post
      * @return array
      */
@@ -44,6 +48,7 @@ class PostManager extends BaseManager
             'title' => $post['title'],
             'content'=> $post['content'],
             'id'=>$post['id'],
+            'url'=>route('post.show',['postId'=>$post['id']]),
             'user' =>
                 [
                     'name' => $post['user']['name'],
@@ -55,6 +60,21 @@ class PostManager extends BaseManager
                     'id'=>$post['category']['id']
                 ],
             'created'=> $post['created_at'],
+        ];
+    }
+
+    /**
+     * @param $post
+     * @return array
+     */
+    public function WrapperForCategoryListing($post)
+    {
+        return [
+            'title' => $post['title'],
+            'content'=> $post['content'],
+            'id' => $post['id'],
+            'url' => route('post.show',['postId'=>$post['id']]),
+            'created' => $post['created_at'],
         ];
     }
 }

@@ -25,7 +25,7 @@ class CommentsManager extends BaseManager
     }
 
 
-    public function getCommentsByUserId()
+    public function getCommentsByPostId()
     {
         //todo
     }
