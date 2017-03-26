@@ -1,17 +1,31 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: root
- * Date: 3/25/17
- * Time: 3:28 AM
- */
 
 namespace App\Http\Controllers\Admin;
 
-
 use App\Http\Controllers\Controller;
+use App\Post;
 
 class PostController extends Controller
 {
+    public function index()
+    {
+        $blogPosts = Post::all();
 
+        return view('admin.posts.home');
+    }
+
+    public function update($postId)
+    {
+
+    }
+
+    public function edit($postId)
+    {
+
+    }
+
+    public function destroy($postId)
+    {
+
+    }
 }

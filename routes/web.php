@@ -10,7 +10,6 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-
 /*post routes*/
 Route::get('/post/data', ['uses'=>'PostController@getData','as'=>'postsData']);
 Route::get('/post/data/{id}', ['uses'=>'PostController@getDataForSinglePost','as'=>'singlePostData']);
