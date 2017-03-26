@@ -3,6 +3,7 @@
 namespace App\Managers;
 
 use App\Repositories\PostRepository;
+use Illuminate\Support\Facades\Auth;
 
 class PostManager extends BaseManager
 {
@@ -27,6 +28,39 @@ class PostManager extends BaseManager
         return $this->wrap($post[0]->toArray());
     }
 
+    /**
+     * @param $postId
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     */
+    public function deletePostWithId($postId)
+    {
+        $post = $this->postRepository->getItemByID($postId);
+
+        if(!$post)
+            return redirect(route('managePosts'));
+
+        $post->delete();
+
+        return redirect(route('managePosts'));
+    }
+
+    public function updatePostWithId($postId, $data)
+    {
+        unset($data['_token']);
+
+        return $this->postRepository->editItem($postId,$data);
+    }
+    /**
+     * @param $data
+     * @return \Illuminate\Database\Eloquent\Model
+     */
+    public function StoreNewPost($data)
+    {
+        unset($data['_token']);
+        $data['user_id'] = Auth::user()->id;
+
+        return $this->postRepository->addItem($data);
+    }
     /**
      * return all posts
      * @return array

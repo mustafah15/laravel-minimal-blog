@@ -15,6 +15,6 @@ class HomeController extends Controller
 {
     public function index()
     {
-        return 'aa';
+        return view('admin.homepage');
     }
 }

@@ -37,9 +37,14 @@
                         <!-- /input-group -->
                     </li>
                     <li class="active">
-                        <a href="index.html"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
+                        <a href="{{route('adminHome')}}"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
                     </li>
-
+                    <li class="active">
+                        <a href="{{route('managePosts')}}"><i class="fa fa-dashboard fa-fw"></i> Manage Blog Posts</a>
+                    </li>
+                    <li class="active">
+                        <a href="{{route('manageCategories')}}"><i class="fa fa-dashboard fa-fw"></i> Manage Blog Categories</a>
+                    </li>
                 </ul>
             </div>
             <!-- /.sidebar-collapse -->
