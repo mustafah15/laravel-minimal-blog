@@ -47,6 +47,26 @@ class CategoryManager extends BaseManager
     }
 
     /**
+     * @param $categoryId
+     * @return int
+     */
+    public function deleteCategoryWithId($categoryId)
+    {
+        return $this->categoryRepository->deleteItemById($categoryId);
+    }
+
+    /**
+     * @param $data
+     * @return \Illuminate\Database\Eloquent\Model
+     */
+    public function storeNewCategory($data)
+    {
+        unset($data['_token']);
+
+        return $this->categoryRepository->addItem($data);
+    }
+
+    /**
      * @param $category
      * @return array
      */
@@ -60,5 +80,12 @@ class CategoryManager extends BaseManager
             'posts'=> (new PostManager())->wrapCollection($category['posts'],'WrapperForCategoryListing'),
             'post_number'=>count($category['posts']),
         ];
+    }
+
+    public function updateCategoryWithId($categoryId, $data)
+    {
+        unset($data['_token']);
+
+        return $this->categoryRepository->editItem($categoryId, $data);
     }
 }

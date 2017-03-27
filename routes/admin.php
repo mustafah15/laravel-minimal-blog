@@ -27,7 +27,7 @@ Route::group(['middleware' => 'auth','prefix' => 'admin'], function () {
     Route::get('/category/edit/{id}',['as'=>'editCategory','uses'=>'Admin\CategoryController@edit']);
     Route::put('/category/edit/{id}',['as'=>'editCategory','uses'=>'Admin\CategoryController@update']);
 
-    Route::get('/category/{id}',['as'=>'editCategory','uses'=>'Admin\CategoryController@destroy']);
+    Route::get('/category/{id}/delete',['as'=>'deleteCategory','uses'=>'Admin\CategoryController@destroy']);
 
 });
 

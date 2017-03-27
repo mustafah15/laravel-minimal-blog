@@ -35,6 +35,8 @@ class PostController extends Controller
     public function update ($postId, Request $request )
     {
         $post = $this->postManager->updatePostWithId($postId,$request->toArray());
+
+        //if not updated
         if(!$post)
             return redirect()->back()->withInput();
 
@@ -79,10 +81,9 @@ class PostController extends Controller
     public function store ( Request $request )
     {
 
-        $post = $this->postManager->StoreNewPost($request->toArray());
+        $post = $this->postManager->storeNewPost($request->toArray());
 
         //if there is no post created
-
         if (!$post)
             return redirect()->back()->withInput();
 

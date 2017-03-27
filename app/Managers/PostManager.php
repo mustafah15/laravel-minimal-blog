@@ -60,7 +60,7 @@ class PostManager extends BaseManager
      * @param $data
      * @return \Illuminate\Database\Eloquent\Model
      */
-    public function StoreNewPost($data)
+    public function storeNewPost($data)
     {
         unset($data['_token']);
         $data['user_id'] = Auth::user()->id;
