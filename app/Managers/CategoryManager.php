@@ -52,7 +52,13 @@ class CategoryManager extends BaseManager
      */
     public function deleteCategoryWithId($categoryId)
     {
-        return $this->categoryRepository->deleteItemById($categoryId);
+        $category = $this->categoryRepository->getItemByID($categoryId);
+
+        if(!$category)
+            return redirect(route('manageCategories'));
+
+        $category->delete();
+        return redirect(route('manageCategories'));
     }
 
     /**
