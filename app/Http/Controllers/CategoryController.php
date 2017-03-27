@@ -19,6 +19,9 @@ class CategoryController extends ApiController
         $this->categoryManager = new CategoryManager();
     }
 
+    /**
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function index()
     {
         return view('categories.all');
@@ -33,6 +36,7 @@ class CategoryController extends ApiController
     {
         $data = $this->categoryManager->getSingleCategoryWithPosts($categoryId);
 
+        //if there is no data for that id
         if(!$data)
             return $this->setStatusCode(404)->respondWithError('Category Not Found!');
 

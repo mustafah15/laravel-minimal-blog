@@ -25,9 +25,13 @@ class CommentsManager extends BaseManager
     }
 
 
-    public function getCommentsByPostId()
+    /**
+     * @param $postId
+     * @return array
+     */
+    public function getCommentsForPostShow($postId)
     {
-        //todo
+        return $this->commentsRepository->getCommentsByPostId($postId);
     }
 
     /**

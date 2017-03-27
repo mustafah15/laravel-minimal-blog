@@ -12,11 +12,18 @@ use App\Category;
 
 class CategoryRepository extends BaseRepository
 {
+    /**
+     * CategoryRepository constructor.
+     */
     public function __construct()
     {
         $this->setModel(new Category());
     }
 
+    /**
+     * @param $categoryId
+     * @return mixed
+     */
     public function getCategoryByIdWithPosts($categoryId)
     {
         return $this->model
@@ -25,6 +32,9 @@ class CategoryRepository extends BaseRepository
             ->get();
     }
 
+    /**
+     * @return array
+     */
     public function getAllCategoriesWithPosts()
     {
         return $this->model->with('posts')->get();

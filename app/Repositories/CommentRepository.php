@@ -17,4 +17,12 @@ class CommentRepository extends BaseRepository
         $this->setModel(new Comment());
     }
 
+    /**
+     * @param $postId
+     * @return array
+     */
+    public function getCommentsByPostId($postId)
+    {
+        return $this->model->where('post_id',$postId)->get();
+    }
 }

@@ -36,6 +36,7 @@ class PostManager extends BaseManager
     {
         $post = $this->postRepository->getItemByID($postId);
 
+        //if post not exist
         if(!$post)
             return redirect(route('managePosts'));
 
@@ -44,6 +45,11 @@ class PostManager extends BaseManager
         return redirect(route('managePosts'));
     }
 
+    /**
+     * @param $postId
+     * @param $data
+     * @return mixed
+     */
     public function updatePostWithId($postId, $data)
     {
         unset($data['_token']);

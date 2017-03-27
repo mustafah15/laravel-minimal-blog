@@ -17,6 +17,9 @@ class PostController extends Controller
         $this->postManager = new PostManager();
     }
 
+    /**
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function index()
     {
         $posts = Post::all();
@@ -73,10 +76,12 @@ class PostController extends Controller
      * @param Request $request
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
-    public function store (Request $request )
+    public function store ( Request $request )
     {
 
         $post = $this->postManager->StoreNewPost($request->toArray());
+
+        //if there is no post created
 
         if (!$post)
             return redirect()->back()->withInput();
