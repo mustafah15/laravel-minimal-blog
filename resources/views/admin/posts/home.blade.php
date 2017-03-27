@@ -32,7 +32,7 @@
                             <td class="center">
                                <a href="{{route('deletePost',['id'=>$post->id])}}" > <button type="button" class="btn btn-danger">
                                     delete</button></a>
-                                <a href="{{route('post.destroy',['id'=>$post->id])}}" ><button type="button" class="btn btn-info">edit</button></a>
+                                <a href="{{route('editPost',['id'=>$post->id])}}" ><button type="button" class="btn btn-info">edit</button></a>
                             </td>
                             <td class="center"><a href="{{route('post.show',['id'=>$post->id])}}" ><button type="button" class="btn btn-warning">view</button></a></td>
                         </tr>

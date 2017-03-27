@@ -13,7 +13,7 @@ Route::group(['middleware' => 'auth','prefix' => 'admin'], function () {
     Route::post('/post/create/',['as'=>'storePost','uses'=>'Admin\PostController@store']);
 
     Route::get('/post/edit/{id}',['as'=>'editPost','uses'=>'Admin\PostController@edit']);
-    Route::put('/post/edit/{id}',['as'=>'updatePost','uses'=>'Admin\PostController@update']);
+    Route::post('/post/edit/{id}',['as'=>'updatePost','uses'=>'Admin\PostController@update']);
 
     Route::get('/post/{id}/delete',['as'=>'deletePost','uses'=>'Admin\PostController@destroy']);
 

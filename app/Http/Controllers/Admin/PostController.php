@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Managers\PostManager;
 use App\Post;
 use App\Repositories\CategoryRepository;
+use App\Repositories\PostRepository;
 use Illuminate\Http\Request;
 
 class PostController extends Controller
@@ -31,7 +32,6 @@ class PostController extends Controller
     public function update ($postId, Request $request )
     {
         $post = $this->postManager->updatePostWithId($postId,$request->toArray());
-
         if(!$post)
             return redirect()->back()->withInput();
 
@@ -42,12 +42,12 @@ class PostController extends Controller
      * @param $postId
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function edit ($postId )
+    public function edit ( $postId )
     {
-        $post = $this->postManager->getSinglePost($postId);
+        $post = (new PostRepository())->getItemByID($postId);
         $categories = (new CategoryRepository())->getAllItems();
 
-        return view('admin.posts.edit',['post'=>$post,'categories'=>$categories]);
+        return view('admin.posts.edit',[ 'post' => $post, 'categories' => $categories ]);
     }
 
     /**
@@ -75,6 +75,7 @@ class PostController extends Controller
      */
     public function store (Request $request )
     {
+
         $post = $this->postManager->StoreNewPost($request->toArray());
 
         if (!$post)

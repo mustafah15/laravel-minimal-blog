@@ -12,11 +12,11 @@
             <form role="form" action="{{route('storePost')}}" method="post">
                 <div class="form-group input-group">
                     <label>Post Title</label>
-                    <input type="text" class="form-control" name="title" placeholder="Post Title">
+                    <input required type="text" class="form-control" name="title" placeholder="Post Title">
                 </div>
                 <div class="form-group input-group">
                     <label>Post Content</label>
-                    <textarea width="%100" class="form-control" name="content"></textarea>
+                    <textarea required width="%100" class="form-control" name="content"></textarea>
                 </div>
                 {{ csrf_field() }}
                 <div class="form-group input-group">
