@@ -41,7 +41,7 @@ class CategoryManager extends BaseManager
      */
     public function getAllCategories ()
     {
-        $data = $this->categoryRepository->getAllItems();
+        $data = $this->categoryRepository->getAllCategoriesWithPosts();
 
         return $this->wrapCollection($data->toArray());
     }
@@ -58,6 +58,7 @@ class CategoryManager extends BaseManager
             'description'=>$category['description'],
             'url'=>route('category.show',['categoryId'=>$category['id']]),
             'posts'=> (new PostManager())->wrapCollection($category['posts'],'WrapperForCategoryListing'),
+            'post_number'=>count($category['posts']),
         ];
     }
 }

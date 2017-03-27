@@ -50,14 +50,12 @@
                     <a href="{{route('home')}}">Home</a>
                 </li>
                 <li>
-                    <a href="about.html">About</a>
+                    <a href="{{route('category.index')}}">All Categories</a>
                 </li>
                 <li>
-                    <a href="post.html">Sample Post</a>
+                    <a href="{{route('post.index')}}">All Posts</a>
                 </li>
-                <li>
-                    <a href="contact.html">Contact</a>
-                </li>
+
             </ul>
         </div>
         <!-- /.navbar-collapse -->

@@ -24,4 +24,10 @@ class CategoryRepository extends BaseRepository
             ->where('id', $categoryId)
             ->get();
     }
+
+    public function getAllCategoriesWithPosts()
+    {
+        return $this->model->with('posts')->get();
+    }
+
 }
