@@ -24,7 +24,7 @@ Manager Classes to handel Application Logic
 
 
 ```
-	\App\Managers
+	\App\Traits
 ```
 Traits created and used in Application
 
