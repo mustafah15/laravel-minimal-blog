@@ -1,0 +1,19 @@
+language: php
+
+php:
+  - 7.1
+
+before_install:
+ 
+
+install:
+  - travis_retry composer install --no-interaction --prefer-dist --no-suggest
+
+script: phpunit
+
+after_failure:
+  - curl http://127.0.0.1:8000
+
+notifications:
+  email:
+    on_success: never
