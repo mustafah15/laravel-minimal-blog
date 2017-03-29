@@ -3,13 +3,16 @@ language: php
 php:
   - 7.1
 
-before_install:
- 
+before_script:
+  - cp .env.travis .env
+  - mysql -e 'create database homestead_test;'
+  - composer self-update
+  - composer install --no-interaction
 
-install:
-  - travis_retry composer install --no-interaction --prefer-dist --no-suggest
+script:
+  - vendor/bin/phpunit
+Raw
 
-script: phpunit
 
 after_failure:
   - curl http://127.0.0.1:8000
