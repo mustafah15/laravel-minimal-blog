@@ -1,3 +1,5 @@
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/mustafah15/blog/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/mustafah15/blog/?branch=master)
+[![Build Status](https://scrutinizer-ci.com/g/mustafah15/blog/badges/build.png?b=master)](https://scrutinizer-ci.com/g/mustafah15/blog/build-status/master)
 # Clean Blog
 
 A Clean Code Designed Blog  
