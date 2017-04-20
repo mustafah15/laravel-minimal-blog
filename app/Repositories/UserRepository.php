@@ -16,5 +16,4 @@ class UserRepository extends BaseRepository
     {
         $this->setModel(new User());
     }
-
 }

@@ -23,6 +23,6 @@ class CommentRepository extends BaseRepository
      */
     public function getCommentsByPostId($postId)
     {
-        return $this->model->where('post_id',$postId)->get();
+        return $this->model->where('post_id', $postId)->get();
     }
 }

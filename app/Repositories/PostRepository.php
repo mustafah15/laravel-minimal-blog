@@ -44,7 +44,7 @@ class PostRepository extends BaseRepository
         return $this->model
             ->with('user')
             ->with('category')
-            ->where('id',$postId)
+            ->where('id', $postId)
             ->get();
     }
 
