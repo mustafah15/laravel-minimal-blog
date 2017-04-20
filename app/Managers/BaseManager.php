@@ -9,7 +9,7 @@ abstract class BaseManager
      * @param $item
      * @return array
      */
-    public abstract function wrap($item);
+    abstract public function wrap($item);
 
 
     /**
@@ -18,6 +18,6 @@ abstract class BaseManager
      */
     public function wrapCollection(array $items, $callback = 'wrap')
     {
-        return array_map([$this, $callback],$items);
+        return array_map([$this, $callback], $items);
     }
 }

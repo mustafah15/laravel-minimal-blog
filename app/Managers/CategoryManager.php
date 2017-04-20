@@ -39,7 +39,7 @@ class CategoryManager extends BaseManager
      * get All system categories
      * @return array
      */
-    public function getAllCategories ()
+    public function getAllCategories()
     {
         $data = $this->categoryRepository->getAllCategoriesWithPosts();
 
@@ -54,8 +54,9 @@ class CategoryManager extends BaseManager
     {
         $category = $this->categoryRepository->getItemByID($categoryId);
 
-        if(!$category)
+        if (!$category) {
             return redirect(route('manageCategories'));
+        }
 
         $category->delete();
         return redirect(route('manageCategories'));
@@ -83,7 +84,7 @@ class CategoryManager extends BaseManager
             'id'=>$category['id'],
             'description'=>$category['description'],
             'url'=>route('category.show',['categoryId'=>$category['id']]),
-            'posts'=> (new PostManager())->wrapCollection($category['posts'],'WrapperForCategoryListing'),
+            'posts'=> (new PostManager())->wrapCollection($category['posts'],'wrapperForCategoryListing'),
             'post_number'=>count($category['posts']),
         ];
     }

@@ -21,7 +21,7 @@ class Post extends Model
      */
     public function category()
     {
-        return $this->belongsTo('App\Category','category_id','id');
+        return $this->belongsTo('App\Category', 'category_id', 'id');
     }
 
     /**
@@ -29,7 +29,7 @@ class Post extends Model
      */
     public function comments()
     {
-        return $this->hasMany('App\Comment','post_id','id');
+        return $this->hasMany('App\Comment', 'post_id', 'id');
     }
 
     /**
@@ -37,6 +37,6 @@ class Post extends Model
      */
     public function user()
     {
-        return $this->belongsTo('App\User','user_id','id');
+        return $this->belongsTo('App\User', 'user_id', 'id');
     }
 }

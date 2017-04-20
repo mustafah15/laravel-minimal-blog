@@ -37,8 +37,9 @@ class PostManager extends BaseManager
         $post = $this->postRepository->getItemByID($postId);
 
         //if post not exist
-        if(!$post)
+        if (!$post) {
             return redirect(route('managePosts'));
+        }
 
         $post->delete();
 
@@ -54,7 +55,7 @@ class PostManager extends BaseManager
     {
         unset($data['_token']);
 
-        return $this->postRepository->editItem($postId,$data);
+        return $this->postRepository->editItem($postId, $data);
     }
     /**
      * @param $data
@@ -73,8 +74,8 @@ class PostManager extends BaseManager
      */
     public function getAllPosts()
     {
-       $posts =  $this->postRepository->getPostsFullData();
-       return $this->wrapCollection($posts->toArray());
+        $posts =  $this->postRepository->getPostsFullData();
+        return $this->wrapCollection($posts->toArray());
     }
 
     /**
@@ -88,7 +89,7 @@ class PostManager extends BaseManager
             'title' => $post['title'],
             'content'=> $post['content'],
             'id'=>$post['id'],
-            'url'=>route('post.show',['postId'=>$post['id']]),
+            'url'=>route('post.show', ['postId'=>$post['id']]),
             'user' =>
                 [
                     'name' => $post['user']['name'],
@@ -107,13 +108,13 @@ class PostManager extends BaseManager
      * @param $post
      * @return array
      */
-    public function WrapperForCategoryListing($post)
+    public function wrapperForCategoryListing($post)
     {
         return [
             'title' => $post['title'],
             'content'=> $post['content'],
             'id' => $post['id'],
-            'url' => route('post.show',['postId'=>$post['id']]),
+            'url' => route('post.show', ['postId'=>$post['id']]),
             'created' => $post['created_at'],
         ];
     }
